@@ -1,5 +1,6 @@
 {
 	"ARRIVAL": "Arrival",
 	"DIRECTION": "Direction",
-	"LOADING": "loading..."
+	"LOADING": "loading...",
+  "ROUTE": "Route"
 }

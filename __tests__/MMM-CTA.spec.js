@@ -23,6 +23,7 @@ it('has a default config', () => {
     routeIcons: true,
     suffixStyle: 'long',
     showHeaders: true,
+    showRoute: false,
     stops: [],
   });
 });

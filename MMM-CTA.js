@@ -17,6 +17,7 @@ Module.register('MMM-CTA', {
     routeIcons: true,
     suffixStyle: 'long',
     showHeaders: true,
+    showRoute: false,
     stops: [],
   },
 
@@ -39,6 +40,7 @@ Module.register('MMM-CTA', {
     this.sendSocketNotification('MMM-CTA-FETCH', {
       trainApiKey: this.config.trainApiKey,
       busApiKey: this.config.busApiKey,
+      showRoute: this.config.showRoute,
       stops: this.config.stops,
       maxResultsTrain: this.config.maxResultsTrain,
       maxResultsBus: this.config.maxResultsBus,
@@ -59,6 +61,7 @@ Module.register('MMM-CTA', {
         arrivals: stop.arrivals?.map((arrival) => ({
           direction: arrival.direction,
           routeColor: arrival.routeColor ? `cta-${arrival.routeColor}` : '',
+          route: arrival.route, //may need to check if this exists
           arrival: arrival.arrival
             ? this.formatMinutes(arrival.arrival)
             : this.getMinutesUntil(arrival.time),
