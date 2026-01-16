@@ -30,8 +30,7 @@ module.exports = NodeHelper.create({
     const responses = await Promise.all(stops.map(async (stop) => {
       if (stop.type === 'train') {
         return {
-          type: 'train',
-          name: stop.name,
+          ...stop,
           arrivals: await this.getTrainData(
             stop.id,
             maxResultsTrain,
@@ -42,8 +41,7 @@ module.exports = NodeHelper.create({
       }
 
       return {
-        type: 'bus',
-        name: stop.name,
+        ...stop,
         arrivals: await this.getBusData(
           stop.id,
           maxResultsBus,

@@ -267,6 +267,7 @@ describe('socketNotificationReceived', () => {
       it('sends data to client', () => {
         expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
           stops: [{
+            id: '1234',
             type: 'train',
             name: 'Mock Stop',
             arrivals: [
@@ -323,8 +324,10 @@ describe('socketNotificationReceived', () => {
       it('sends data to client, filtered and still truncated', () => {
         expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
           stops: [{
+            id: '1234',
             type: 'train',
             name: 'Mock Stop',
+            minimumArrivalTime: 120000,
             arrivals: [
               {
                 direction: 'Howard',
@@ -370,6 +373,7 @@ describe('socketNotificationReceived', () => {
       it('sends data to client', () => {
         expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
           stops: [{
+            id: '1234',
             type: 'bus',
             name: 'Mock Stop',
             arrivals: [
@@ -426,8 +430,10 @@ describe('socketNotificationReceived', () => {
       it('sends data to client', () => {
         expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
           stops: [{
+            id: '1234',
             type: 'bus',
             name: 'Mock Stop',
+            minimumArrivalTime: 240000,
             arrivals: [
               {
                 route: '152',
@@ -485,6 +491,7 @@ describe('socketNotificationReceived', () => {
       expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
         stops: [
           {
+            id: '1234',
             type: 'train',
             name: 'Mock Stop',
             arrivals: [
@@ -511,6 +518,7 @@ describe('socketNotificationReceived', () => {
             ],
           },
           {
+            id: '1234',
             type: 'bus',
             name: 'Mock Stop',
             arrivals: [
@@ -561,6 +569,7 @@ describe('socketNotificationReceived', () => {
     it('sends data to client', () => {
       expect(helper.sendSocketNotification).toHaveBeenCalledWith('MMM-CTA-DATA', {
         stops: [{
+          id: '1234',
           type: 'bus',
           name: 'Mock Stop',
           arrivals: [],
