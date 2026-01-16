@@ -22,7 +22,7 @@
             </td>
           </tr>
 
-          {% if showHeaders %}
+          {% if stop.showHeaders === undefined and showHeaders or stop.showHeaders %}
             <tr class="small">
               {% if stop.arrivals.length %}
                 {% if routeIcons %}
