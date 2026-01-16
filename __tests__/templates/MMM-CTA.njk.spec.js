@@ -42,6 +42,14 @@ describe('train stop', () => {
     expect(template).toContain('Train Stop');
   });
 
+  it('will not show name section if not included', () => {
+    data.stops[0].name = null;
+    template = nunjucks.render('MMM-CTA.njk', data);
+
+    expect(template).not.toContain('Train Stop');
+    expect(template).not.toContain('class="bright align-middle"');
+  });
+
   it('shows train stop directions', () => {
     template = nunjucks.render('MMM-CTA.njk', data);
 
@@ -139,7 +147,6 @@ describe('bus stop', () => {
   describe('showHeaders turned on', () => {
     beforeEach(() => {
       data.showHeaders = true;
-      template = nunjucks.render('MMM-CTA.njk', data);
       data.stops = [{
         type: 'bus',
         name: 'Bus Stop',
@@ -153,20 +160,38 @@ describe('bus stop', () => {
     });
 
     it('shows headers', () => {
+      template = nunjucks.render('MMM-CTA.njk', data);
+
       expect(template).toContain('DIRECTION');
       expect(template).toContain('ARRIVAL');
+    });
+
+    it('can be overridden per stop', () => {
+      data.stops[0].showHeaders = false;
+      template = nunjucks.render('MMM-CTA.njk', data);
+
+      expect(template).not.toContain('DIRECTION');
+      expect(template).not.toContain('ARRIVAL');
     });
   });
 
   describe('showHeaders turned off', () => {
     beforeEach(() => {
       data.showHeaders = false;
-      template = nunjucks.render('MMM-CTA.njk', data);
     });
 
     it('does not show headers', () => {
+      template = nunjucks.render('MMM-CTA.njk', data);
       expect(template).not.toContain('DIRECTION');
       expect(template).not.toContain('ARRIVAL');
+    });
+
+    it('can be overridden per stop', () => {
+      data.stops[0].showHeaders = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+
+      expect(template).toContain('DIRECTION');
+      expect(template).toContain('ARRIVAL');
     });
   });
 });
