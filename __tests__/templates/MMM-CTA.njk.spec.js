@@ -42,6 +42,14 @@ describe('train stop', () => {
     expect(template).toContain('Train Stop');
   });
 
+  it('will not show name section if not included', () => {
+    data.stops[0].name = null;
+    template = nunjucks.render('MMM-CTA.njk', data);
+
+    expect(template).not.toContain('Train Stop');
+    expect(template).not.toContain('class="bright align-middle"');
+  });
+
   it('shows train stop directions', () => {
     template = nunjucks.render('MMM-CTA.njk', data);
 

@@ -9,18 +9,20 @@
         <table class="cta-mt-10">
       {% endif %}
         <thead>
-          <tr>
-            <td
-              class="bright align-middle"
-              {% if routeIcons %}
-                colspan="3"
-              {% else %}
-                colspan="2"
-              {% endif %}
-            >
-              {{ stop.name}}
-            </td>
-          </tr>
+          {% if stop.name %}
+            <tr>
+              <td
+                class="bright align-middle"
+                {% if routeIcons %}
+                  colspan="3"
+                {% else %}
+                  colspan="2"
+                {% endif %}
+              >
+                {{ stop.name}}
+              </td>
+            </tr>
+          {% endif %}
 
           {% if stop.showHeaders === undefined and showHeaders or stop.showHeaders %}
             <tr class="small">
