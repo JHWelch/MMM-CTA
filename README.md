@@ -76,12 +76,12 @@ The `stops` option is an array of objects. Each object represents a stop to disp
 }
 ```
 
-| Property              | Description                                                                         |
-| --------              | ----------------------------------------------------------------------------------- |
-| `type`                | Type of stop. Either `bus` or `train`                                               |
-| `id`                  | Stop ID. See [Finding Stop IDs](#finding-stop-ids)                                  |
-| `name`                | Name of stop. This is displayed in the header of the stop's results.                |
-| `minimumArrivalTime`  | The minimum time to arrival for the bus or train to be displayed. In ms. Default 0. |
+| Property             | Required?    | Description                                                                         |
+| -------------------- | ------------ | ----------------------------------------------------------------------------------- |
+| `type`               | **Required** | Type of stop. Either `bus` or `train`                                               |
+| `id`                 | **Required** | Stop ID. See [Finding Stop IDs](#finding-stop-ids)                                  |
+| `name`               | **Required** | Name of stop. This is displayed in the header of the stop's results.                |
+| `minimumArrivalTime` | *Optional*   | The minimum time to arrival for the bus or train to be displayed. In ms. Default 0. |
 
 ### Finding Stop IDs
 
