@@ -28,26 +28,23 @@ module.exports = NodeHelper.create({
     stops,
   }) {
     const responses = await Promise.all(stops.map(async (stop) => {
-      if (stop.type === 'train') {
-        return {
-          ...stop,
-          arrivals: await this.getTrainData(
-            stop.id,
-            maxResultsTrain,
-            trainApiKey,
-            stop.minimumArrivalTime ?? 0,
-          ),
-        };
-      }
-
-      return {
-        ...stop,
-        arrivals: await this.getBusData(
+      const arrivals = stop.type === 'train'
+        ? await this.getTrainData(
+          stop.id,
+          maxResultsTrain,
+          trainApiKey,
+          stop.minimumArrivalTime ?? 0,
+        )
+        : await this.getBusData(
           stop.id,
           maxResultsBus,
           busApiKey,
           stop.minimumArrivalTime ?? 0,
-        ),
+        );
+
+      return {
+        ...stop,
+        arrivals,
       };
     }));
 
