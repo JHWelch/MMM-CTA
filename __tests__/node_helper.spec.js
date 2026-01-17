@@ -15,17 +15,17 @@ afterEach(() => {
 });
 
 const mockBusFetch = () => fetchMock.mockGlobal().get(
-  'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
+  'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
   busData,
 );
 
 const mockBusFetchNoTop = () => fetchMock.mockGlobal().get(
-  'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json',
+  'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json',
   busData,
 );
 
 const mockBusFetchNoService = () => fetchMock.mockGlobal().get(
-  'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
+  'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
   {
     'bustime-response': {
       error: [
@@ -190,7 +190,7 @@ describe('socketNotificationReceived', () => {
 
       it('calls bus API with passed arguments', () => {
         expect(fetchMock.callHistory.callLogs[0].args[0]).toBe(
-          'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
+          'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
         );
       });
 
@@ -247,7 +247,7 @@ describe('socketNotificationReceived', () => {
 
       it('calls bus API without top parameter', () => {
         expect(fetchMock.callHistory.callLogs[0].args[0]).toBe(
-          'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json',
+          'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json',
         );
       });
 
@@ -307,7 +307,7 @@ describe('socketNotificationReceived', () => {
       );
 
       expect(fetchMock.callHistory.callLogs[1].args[0]).toBe(
-        'http://www.ctabustracker.com/bustime/api/v2/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
+        'http://www.ctabustracker.com/bustime/api/v3/getpredictions?key=BUS_API_KEY&stpid=1234&format=json&top=5',
       );
     });
 

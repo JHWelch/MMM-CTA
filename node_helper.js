@@ -124,7 +124,7 @@ module.exports = NodeHelper.create({
       ...(maxResults && { top: maxResults }),
     });
 
-    return `http://www.ctabustracker.com/bustime/api/v2/getpredictions?${params.toString()}`;
+    return `http://www.ctabustracker.com/bustime/api/v3/getpredictions?${params.toString()}`;
   },
 
   trainUrl ({id, apiKey, maxResults = null}) {
