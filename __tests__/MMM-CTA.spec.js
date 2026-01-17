@@ -97,27 +97,34 @@ describe('getTemplateData', () => {
 
   describe('bus information', () => {
     beforeEach(() => {
-      stops = [{
-        type: 'bus',
-        name: 'Mock Stop',
-        arrivals: [
-          {
-            route: '152',
-            direction: 'Westbound',
-            arrival: 'DUE',
-          },
-          {
-            route: '152',
-            direction: 'Westbound',
-            arrival: '1',
-          },
-          {
-            route: '152',
-            direction: 'Westbound',
-            arrival: '27',
-          },
-        ],
-      }];
+      stops = [
+        {
+          type: 'bus',
+          name: 'Mock Stop',
+          arrivals: [
+            {
+              route: '152',
+              direction: 'Westbound',
+              arrival: 'DUE',
+            },
+            {
+              route: '152',
+              direction: 'Westbound',
+              arrival: '1',
+            },
+            {
+              route: '152',
+              direction: 'Westbound',
+              arrival: '27',
+            },
+          ],
+        },
+        {
+          type: 'bus',
+          name: 'Another Stop',
+          arrivals: [],
+        },
+      ];
 
       MMMCTA.data.stops = stops;
     });
@@ -128,30 +135,37 @@ describe('getTemplateData', () => {
         routeIcons: MMMCTA.config.routeIcons,
         showHeaders: MMMCTA.config.showHeaders,
         showRoute: MMMCTA.config.showRoute,
-        stops: [{
-          type: 'bus',
-          name: 'Mock Stop',
-          arrivals: [
-            {
-              direction: 'Westbound',
-              arrival: 'DUE',
-              routeColor: '',
-              route: '152',
-            },
-            {
-              direction: 'Westbound',
-              arrival: '1 min',
-              routeColor: '',
-              route: '152',
-            },
-            {
-              direction: 'Westbound',
-              arrival: '27 mins',
-              routeColor: '',
-              route: '152',
-            },
-          ],
-        }],
+        stops: [
+          {
+            type: 'bus',
+            name: 'Mock Stop',
+            arrivals: [
+              {
+                direction: 'Westbound',
+                arrival: 'DUE',
+                routeColor: '',
+                route: '152',
+              },
+              {
+                direction: 'Westbound',
+                arrival: '1 min',
+                routeColor: '',
+                route: '152',
+              },
+              {
+                direction: 'Westbound',
+                arrival: '27 mins',
+                routeColor: '',
+                route: '152',
+              },
+            ],
+          },
+          {
+            type: 'bus',
+            name: 'Another Stop',
+            arrivals: [],
+          },
+        ],
       });
     });
 
@@ -172,6 +186,21 @@ describe('getTemplateData', () => {
 
       it('returns showHeaders false', () => {
         expect(MMMCTA.getTemplateData().showHeaders).toEqual(false);
+      });
+    });
+
+    describe('showHeaders turned on', () => {
+      beforeEach(() => {
+        MMMCTA.setConfig({ showHeaders: true });
+      });
+
+      it('returns showHeaders true', () => {
+        expect(MMMCTA.getTemplateData().showHeaders).toEqual(true);
+      });
+
+      it('can be overridden to false', () => {
+        MMMCTA.data.stops[0].showHeaders = false;
+        expect(MMMCTA.getTemplateData().stops[0].showHeaders).toEqual(false);
       });
     });
   });
