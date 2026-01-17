@@ -27,10 +27,10 @@
           {% if stop.showHeaders %}
             <tr class="small">
               {% if stop.arrivals.length %}
-                {% if routeIcons and (not showRoute or stop.type !== 'bus') %}
+                {% if routeIcons and not stop.showRoute %}
                   <th class="align-left"></th>
                 {% endif %}
-                {% if showRoute and stop.type === 'bus' %}
+                {% if stop.showRoute %}
                   <th class="align-left">
                     {{ "ROUTE" | translate }}
                   </th>
@@ -60,13 +60,13 @@
                         <i class="fa fa-bus fa-sm"></i>
                       {% endif %}
 
-                      {% if showRoute and stop.type === 'bus' %}
+                      {% if stop.showRoute %}
                         {{ arrival.route }}
                       {% endif %}
                     </div>
                   </td>
                 {% endif %}
-                {% if not routeIcons and showRoute and stop.type === 'bus' %}
+                {% if not routeIcons and stop.showRoute %}
                   <td class="align-left cta-pr-20">
                     {{ arrival.route }}
                   </td>

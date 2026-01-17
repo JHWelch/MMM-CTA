@@ -88,7 +88,7 @@ describe('train stop', () => {
 
   describe('showRoute turned on', () => {
     beforeEach(() => {
-      data.showRoute = true;
+      data.stops[0].showRoute = true;
       data.stops[0].arrivals[0].route = 'Red'; // Adding route info for testing
       template = nunjucks.render('MMM-CTA.njk', data);
     });
@@ -100,7 +100,7 @@ describe('train stop', () => {
 
   describe('showRoute turned off', () => {
     beforeEach(() => {
-      data.showRoute = false;
+      data.stops[0].showRoute = false;
       data.stops[0].arrivals[0].route = 'Red'; // Adding route info for testing
       template = nunjucks.render('MMM-CTA.njk', data);
     });
@@ -149,12 +149,12 @@ describe('train stop', () => {
   describe('showHeaders and showRoute both on', () => {
     beforeEach(() => {
       data.stops[0].showHeaders = true;
-      data.showRoute = true;
+      data.stops[0].showRoute = true;
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
-    it('still does not show route header', () => {
-      expect(template).not.toContain('ROUTE');
+    it('shows route header', () => {
+      expect(template).toContain('ROUTE');
     });
   });
 });
@@ -221,7 +221,7 @@ describe('bus stop', () => {
 
   describe('showRoute turned on', () => {
     beforeEach(() => {
-      data.showRoute = true;
+      data.stops[0].showRoute = true;
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
@@ -232,7 +232,7 @@ describe('bus stop', () => {
 
   describe('showRoute turned off', () => {
     beforeEach(() => {
-      data.showRoute = false;
+      data.stops[0].showRoute = false;
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
@@ -280,7 +280,7 @@ describe('bus stop', () => {
   describe('showHeaders and showRoute both on', () => {
     beforeEach(() => {
       data.stops[0].showHeaders = true;
-      data.showRoute = true;
+      data.stops[0].showRoute = true;
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
@@ -292,7 +292,7 @@ describe('bus stop', () => {
   describe('routeIcons and showRoute both on', () => {
     beforeEach(() => {
       data.routeIcons = true;
-      data.showRoute = true;
+      data.stops[0].showRoute = true;
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
