@@ -22,6 +22,7 @@ it('has a default config', () => {
     maxResultsBus: 5,
     routeIcons: true,
     suffixStyle: 'long',
+    showRoute: false,
     showHeaders: true,
     showRoute: false,
     stops: [],
