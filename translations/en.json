@@ -1,6 +1,6 @@
 {
-	"ARRIVAL": "Arrival",
-	"DIRECTION": "Direction",
-	"LOADING": "loading...",
+  "ARRIVAL": "Arrival",
+  "DIRECTION": "Direction",
+  "LOADING": "loading...",
   "ROUTE": "Route"
 }
