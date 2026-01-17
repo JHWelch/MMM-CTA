@@ -30,6 +30,12 @@
                 {% if routeIcons %}
                   <th class="align-left"></th>
                 {% endif %}
+                {% if showRoute and stop.type === 'bus' %}
+                  <th class="align-left">
+                    {{ "ROUTE" | translate }}
+                  </th>
+                {% endif %}
+
                 <th class="align-left">
                   {{ "DIRECTION" | translate }}
                 </th>
@@ -40,7 +46,7 @@
               {% endif %}
             </tr>
           {% endif %}
-        </thead>
+        </thead>  
         <tbody>
 	        {% if stop.arrivals.length %}
             {% for arrival in stop.arrivals %}
@@ -52,6 +58,11 @@
                     {% elif stop.type === 'bus' %}
                       <i class="fa fa-bus fa-sm cta-mr-5"></i>
                     {% endif %}
+                  </td>
+                {% endif %}
+                {% if showRoute and stop.type === 'bus' %}
+                  <td class="align-left cta-pr-20">
+                    {{ arrival.route }}
                   </td>
                 {% endif %}
 
