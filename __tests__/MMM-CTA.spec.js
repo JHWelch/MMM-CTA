@@ -24,7 +24,6 @@ it('has a default config', () => {
     suffixStyle: 'long',
     showRoute: false,
     showHeaders: true,
-    showRoute: false,
     stops: [],
   });
 });
@@ -45,6 +44,7 @@ describe('start', () => {
     stops: [],
     maxResultsTrain: 5,
     maxResultsBus: 5,
+    showRoute: false,
   };
 
   beforeEach(() => {
@@ -136,16 +136,19 @@ describe('getTemplateData', () => {
               direction: 'Westbound',
               arrival: 'DUE',
               routeColor: '',
+              route: '152',
             },
             {
               direction: 'Westbound',
               arrival: '1 min',
               routeColor: '',
+              route: '152',
             },
             {
               direction: 'Westbound',
               arrival: '27 mins',
               routeColor: '',
+              route: '152',
             },
           ],
         }],
