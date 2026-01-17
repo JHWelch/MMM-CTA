@@ -127,6 +127,7 @@ describe('getTemplateData', () => {
         loading: MMMCTA.loading,
         routeIcons: MMMCTA.config.routeIcons,
         showHeaders: MMMCTA.config.showHeaders,
+        showRoute: MMMCTA.config.showRoute,
         stops: [{
           type: 'bus',
           name: 'Mock Stop',
@@ -214,6 +215,7 @@ describe('getTemplateData', () => {
         loading: MMMCTA.loading,
         routeIcons: MMMCTA.config.routeIcons,
         showHeaders: MMMCTA.config.showHeaders,
+        showRoute: MMMCTA.config.showRoute,
         stops: [{
           type: 'train',
           name: 'Mock Stop',
