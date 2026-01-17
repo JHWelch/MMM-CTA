@@ -27,7 +27,7 @@
           {% if stop.showHeaders === undefined and showHeaders or stop.showHeaders %}
             <tr class="small">
               {% if stop.arrivals.length %}
-                {% if routeIcons %}
+                {% if routeIcons and (not showRoute or stop.type !== 'bus') %}
                   <th class="align-left"></th>
                 {% endif %}
                 {% if showRoute and stop.type === 'bus' %}
@@ -46,21 +46,27 @@
               {% endif %}
             </tr>
           {% endif %}
-        </thead>  
+        </thead>
         <tbody>
 	        {% if stop.arrivals.length %}
             {% for arrival in stop.arrivals %}
               <tr class="small">
                 {% if routeIcons %}
-                  <td class="icon-col align-left {{ arrival.routeColor }}">
-                    {% if stop.type === 'train' %}
-                      <i class="fa fa-train fa-sm cta-mr-5"></i>
-                    {% elif stop.type === 'bus' %}
-                      <i class="fa fa-bus fa-sm cta-mr-5"></i>
-                    {% endif %}
+                  <td class="{{ arrival.routeColor }} icon-col cta-pr-5">
+                    <div>
+                      {% if stop.type === 'train' %}
+                        <i class="fa fa-train fa-sm"></i>
+                      {% elif stop.type === 'bus' %}
+                        <i class="fa fa-bus fa-sm"></i>
+                      {% endif %}
+
+                      {% if showRoute and stop.type === 'bus' %}
+                        {{ arrival.route }}
+                      {% endif %}
+                    </div>
                   </td>
                 {% endif %}
-                {% if showRoute and stop.type === 'bus' %}
+                {% if not routeIcons and showRoute and stop.type === 'bus' %}
                   <td class="align-left cta-pr-20">
                     {{ arrival.route }}
                   </td>

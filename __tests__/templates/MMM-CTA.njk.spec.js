@@ -85,6 +85,95 @@ describe('train stop', () => {
       expect(template).not.toContain('fa-train');
     });
   });
+
+  describe('showRoute turned on', () => {
+    beforeEach(() => {
+      data.showRoute = true;
+      data.stops[0].arrivals[0].route = 'Red'; // Adding route info for testing
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('should not show route', () => {
+      expect(template).not.toContain('Red');
+    });
+  });
+
+  describe('showRoute turned off', () => {
+    beforeEach(() => {
+      data.showRoute = false;
+      data.stops[0].arrivals[0].route = 'Red'; // Adding route info for testing
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('should not show route', () => {
+      expect(template).not.toContain('Red');
+    });
+  });
+
+  describe('showHeaders turned on', () => {
+    beforeEach(() => {
+      data.showHeaders = true;
+      data.stops = [{
+        type: 'bus',
+        name: 'Bus Stop',
+        arrivals: [
+          {
+            direction: 'North',
+            arrival: 5,
+          },
+        ],
+      }];
+    });
+
+    it('shows headers', () => {
+      template = nunjucks.render('MMM-CTA.njk', data);
+
+      expect(template).toContain('DIRECTION');
+      expect(template).toContain('ARRIVAL');
+      expect(template).not.toContain('ROUTE');
+    });
+
+    it('can be overridden per stop', () => {
+      data.stops[0].showHeaders = false;
+      template = nunjucks.render('MMM-CTA.njk', data);
+
+      expect(template).not.toContain('DIRECTION');
+      expect(template).not.toContain('ARRIVAL');
+      expect(template).not.toContain('ROUTE');
+    });
+  });
+
+  describe('showHeaders turned off', () => {
+    beforeEach(() => {
+      data.showHeaders = false;
+    });
+
+    it('does not show headers', () => {
+      template = nunjucks.render('MMM-CTA.njk', data);
+      expect(template).not.toContain('DIRECTION');
+      expect(template).not.toContain('ARRIVAL');
+    });
+
+    it('can be overridden per stop', () => {
+      data.stops[0].showHeaders = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+
+      expect(template).toContain('DIRECTION');
+      expect(template).toContain('ARRIVAL');
+    });
+  });
+
+  describe('showHeaders and showRoute both on', () => {
+    beforeEach(() => {
+      data.showHeaders = true;
+      data.showRoute = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('still does not show route header', () => {
+      expect(template).not.toContain('ROUTE');
+    });
+  });
 });
 
 describe('bus stop', () => {
@@ -96,10 +185,12 @@ describe('bus stop', () => {
         arrivals: [
           {
             direction: 'North',
+            route: '81',
             arrival: 5,
           },
           {
             direction: 'South',
+            route: '81',
             arrival: 10,
           },
         ],
@@ -130,6 +221,7 @@ describe('bus stop', () => {
 
     it('shows bus icon', () => {
       expect(template).toContain('fa-bus');
+      expect(template).not.toContain('81');
     });
   });
 
@@ -141,6 +233,28 @@ describe('bus stop', () => {
 
     it('does not show bus icon', () => {
       expect(template).not.toContain('fa-bus');
+    });
+  });
+
+  describe('showRoute turned on', () => {
+    beforeEach(() => {
+      data.showRoute = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('should show route', () => {
+      expect(template).toContain('81');
+    });
+  });
+
+  describe('showRoute turned off', () => {
+    beforeEach(() => {
+      data.showRoute = false;
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('should not show route', () => {
+      expect(template).not.toContain('81');
     });
   });
 
@@ -164,6 +278,7 @@ describe('bus stop', () => {
 
       expect(template).toContain('DIRECTION');
       expect(template).toContain('ARRIVAL');
+      expect(template).not.toContain('ROUTE');
     });
 
     it('can be overridden per stop', () => {
@@ -172,6 +287,7 @@ describe('bus stop', () => {
 
       expect(template).not.toContain('DIRECTION');
       expect(template).not.toContain('ARRIVAL');
+      expect(template).not.toContain('ROUTE');
     });
   });
 
@@ -192,6 +308,31 @@ describe('bus stop', () => {
 
       expect(template).toContain('DIRECTION');
       expect(template).toContain('ARRIVAL');
+    });
+  });
+
+  describe('showHeaders and showRoute both on', () => {
+    beforeEach(() => {
+      data.showHeaders = true;
+      data.showRoute = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('shows route header', () => {
+      expect(template).toContain('ROUTE');
+    });
+  });
+
+  describe('routeIcons and showRoute both on', () => {
+    beforeEach(() => {
+      data.routeIcons = true;
+      data.showRoute = true;
+      template = nunjucks.render('MMM-CTA.njk', data);
+    });
+
+    it('should show route and icons', () => {
+      expect(template).toContain('fa-bus');
+      expect(template).toContain('81');
     });
   });
 });
