@@ -133,12 +133,12 @@ describe('getTemplateData', () => {
       expect(MMMCTA.getTemplateData()).toEqual({
         loading: MMMCTA.loading,
         routeIcons: MMMCTA.config.routeIcons,
-        showHeaders: MMMCTA.config.showHeaders,
         showRoute: MMMCTA.config.showRoute,
         stops: [
           {
             type: 'bus',
             name: 'Mock Stop',
+            showHeaders: MMMCTA.config.showHeaders,
             arrivals: [
               {
                 direction: 'Westbound',
@@ -163,6 +163,7 @@ describe('getTemplateData', () => {
           {
             type: 'bus',
             name: 'Another Stop',
+            showHeaders: MMMCTA.config.showHeaders,
             arrivals: [],
           },
         ],
@@ -184,8 +185,19 @@ describe('getTemplateData', () => {
         MMMCTA.setConfig({ showHeaders: false });
       });
 
-      it('returns showHeaders false', () => {
-        expect(MMMCTA.getTemplateData().showHeaders).toEqual(false);
+      it('returns showHeaders false on each stop', () => {
+        const [stop1, stop2] = MMMCTA.getTemplateData().stops;
+
+        expect(stop1.showHeaders).toEqual(false);
+        expect(stop2.showHeaders).toEqual(false);
+      });
+
+      it('can be overridden to true', () => {
+        MMMCTA.data.stops[0].showHeaders = true;
+        const [stop1, stop2] = MMMCTA.getTemplateData().stops;
+
+        expect(stop1.showHeaders).toEqual(true);
+        expect(stop2.showHeaders).toEqual(false);
       });
     });
 
@@ -194,13 +206,19 @@ describe('getTemplateData', () => {
         MMMCTA.setConfig({ showHeaders: true });
       });
 
-      it('returns showHeaders true', () => {
-        expect(MMMCTA.getTemplateData().showHeaders).toEqual(true);
+      it('returns showHeaders false on each stop', () => {
+        const [stop1, stop2] = MMMCTA.getTemplateData().stops;
+
+        expect(stop1.showHeaders).toEqual(true);
+        expect(stop2.showHeaders).toEqual(true);
       });
 
       it('can be overridden to false', () => {
         MMMCTA.data.stops[0].showHeaders = false;
-        expect(MMMCTA.getTemplateData().stops[0].showHeaders).toEqual(false);
+        const [stop1, stop2] = MMMCTA.getTemplateData().stops;
+
+        expect(stop1.showHeaders).toEqual(false);
+        expect(stop2.showHeaders).toEqual(true);
       });
     });
   });
@@ -243,11 +261,11 @@ describe('getTemplateData', () => {
       expect(MMMCTA.getTemplateData()).toEqual({
         loading: MMMCTA.loading,
         routeIcons: MMMCTA.config.routeIcons,
-        showHeaders: MMMCTA.config.showHeaders,
         showRoute: MMMCTA.config.showRoute,
         stops: [{
           type: 'train',
           name: 'Mock Stop',
+          showHeaders: MMMCTA.config.showHeaders,
           arrivals: [
             {
               direction: '95th/Dan Ryan',

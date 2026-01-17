@@ -54,9 +54,10 @@ Module.register('MMM-CTA', {
     return {
       loading: this.loading,
       routeIcons: this.config.routeIcons,
-      showHeaders: this.config.showHeaders,
       showRoute: this.config.showRoute,
       stops: this.data.stops?.map((stop) => ({
+        // Overridable per-stop fields
+        showHeaders: this.config.showHeaders,
         ...stop,
         arrivals: stop.arrivals?.map((arrival) => ({
           direction: arrival.direction,
