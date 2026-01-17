@@ -24,7 +24,7 @@
             </tr>
           {% endif %}
 
-          {% if stop.showHeaders === undefined and showHeaders or stop.showHeaders %}
+          {% if stop.showHeaders %}
             <tr class="small">
               {% if stop.arrivals.length %}
                 {% if routeIcons and (not showRoute or stop.type !== 'bus') %}
