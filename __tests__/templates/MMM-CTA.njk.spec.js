@@ -93,8 +93,8 @@ describe('train stop', () => {
       template = nunjucks.render('MMM-CTA.njk', data);
     });
 
-    it('should not show route', () => {
-      expect(template).not.toContain('Red');
+    it('should show route', () => {
+      expect(template).toContain('Red');
     });
   });
 
