@@ -40,7 +40,6 @@ Module.register('MMM-CTA', {
     this.sendSocketNotification('MMM-CTA-FETCH', {
       trainApiKey: this.config.trainApiKey,
       busApiKey: this.config.busApiKey,
-      showRoute: this.config.showRoute,
       stops: this.config.stops,
       maxResultsTrain: this.config.maxResultsTrain,
       maxResultsBus: this.config.maxResultsBus,

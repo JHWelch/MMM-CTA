@@ -44,7 +44,6 @@ describe('start', () => {
     stops: [],
     maxResultsTrain: 5,
     maxResultsBus: 5,
-    showRoute: false,
   };
 
   beforeEach(() => {
