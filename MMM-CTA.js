@@ -17,6 +17,7 @@ Module.register('MMM-CTA', {
     routeIcons: true,
     suffixStyle: 'long',
     showHeaders: true,
+    showRoute: false,
     stops: [],
   },
 
@@ -53,12 +54,15 @@ Module.register('MMM-CTA', {
     return {
       loading: this.loading,
       routeIcons: this.config.routeIcons,
-      showHeaders: this.config.showHeaders,
       stops: this.data.stops?.map((stop) => ({
+        // Overridable per-stop fields
+        showHeaders: this.config.showHeaders,
+        showRoute: this.config.showRoute && stop.type === 'bus',
         ...stop,
         arrivals: stop.arrivals?.map((arrival) => ({
           direction: arrival.direction,
           routeColor: arrival.routeColor ? `cta-${arrival.routeColor}` : '',
+          route: arrival.route,
           arrival: arrival.arrival
             ? this.formatMinutes(arrival.arrival)
             : this.getMinutesUntil(arrival.time),

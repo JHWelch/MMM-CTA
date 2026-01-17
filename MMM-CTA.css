@@ -3,8 +3,8 @@
   margin-top: 10px;
 }
 
-.cta-mr-5 {
-  margin-right: 5px;
+.cta-pr-5 {
+  padding-right: 5px;
 }
 
 .cta-pr-20 {
@@ -12,7 +12,14 @@
 }
 
 .icon-col {
-  width: 15px;
+  width:0.1%;
+  white-space: nowrap;
+}
+
+.icon-col div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 /**
