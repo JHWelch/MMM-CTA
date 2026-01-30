@@ -15,7 +15,7 @@ Your contributions must pass all the tests and workflows before they can be merg
 Many linting problems can be automatically fixed by running 
 
 ```sh
-npm run fix
+node --run fix
 ```
 
 ## Testing
@@ -27,7 +27,7 @@ Tests are written with [Jest](https://jestjs.io/) and are located in `__tests__`
 They can be run with
 
 ```sh
-npm test
+node --run test
 ```
 
 ## Any questions?

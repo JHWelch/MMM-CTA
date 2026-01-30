@@ -1,6 +1,6 @@
 # MMM-CTA
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror/).
 
 This module displays Chicago Transit Authority (CTA) bus and train arrival times.
 
@@ -9,8 +9,9 @@ This module displays Chicago Transit Authority (CTA) bus and train arrival times
 ## Installation
 
 In ~/MagicMirror/modules
+
 ```sh
-git clone https://github.com/JHWelch/MMM-CTA.git
+git clone https://github.com/JHWelch/MMM-CTA
 ```
 
 No dependencies are required for usage. See below for development dependencies.
@@ -24,23 +25,22 @@ You need to obtain API keys to access CTA data. The API keys are two separate ke
 
 The bus tracker API key can be obtained immediately, the train tracker key can take a few days to register.
 
-## Using the module
+## Configuration
 
-To use this module, add the following configuration block to the modules array in the `config/config.js` file:
+To use this module, add the following configuration to your `config/config.js` file.
+
 ```js
-var config = {
-  modules: [
-    {
-      module: 'MMM-CTA',
-      config: {
-        // See below for configurable options
-      }
-    }
-  ]
+{
+  module: 'MMM-CTA',
+  config: {
+    busApiKey: 'YOUR_BUS_API_KEY',
+    trainApiKey: 'YOUR_TRAIN_API_KEY',
+    stops: [
+      // See `stops` option below
+    ],
+  }
 }
 ```
-
-## Configuration options
 
 | Option            | Required?    | Description                                                                         |
 | ----------------- | ------------ | ----------------------------------------------------------------------------------- |
@@ -94,6 +94,17 @@ The `stops` option is an array of objects. Each object represents a stop to disp
    1. For train tracker, it may look like `?sid={id}`. The `id` is the stop ID.
    2. For bus tracker, it may look like `Southbound/{id}`. The `id` is the stop ID.
 
+## Update
+
+To update the module, navigate to the module folder and use git to pull the latest changes.
+
+```sh
+cd ~/MagicMirror/modules/MMM-CTA
+git pull
+```
+
+There are no additional dependencies to update.
+
 ## Development
 
 ### Installation
@@ -109,17 +120,17 @@ npm install
 There is a test suite using Jest.
 
 ```sh
-npm test
+node --run test
 ```
 
 ### Linting
 
 ```sh
 # Run linting
-npm run lint
+node --run lint
 
 # Fix linting errors
-npm run fix
+node --run fix
 ```
 
 
