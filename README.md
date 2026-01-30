@@ -93,6 +93,17 @@ The `stops` option is an array of objects. Each object represents a stop to disp
    1. For train tracker, it may look like `?sid={id}`. The `id` is the stop ID.
    2. For bus tracker, it may look like `Southbound/{id}`. The `id` is the stop ID.
 
+## Update
+
+To update the module, navigate to the module folder and use git to pull the latest changes.
+
+```sh
+cd ~/MagicMirror/modules/MMM-CTA
+git pull
+```
+
+There are no additional dependencies to update.
+
 ## Development
 
 ### Installation
