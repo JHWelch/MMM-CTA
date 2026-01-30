@@ -9,8 +9,9 @@ This module displays Chicago Transit Authority (CTA) bus and train arrival times
 ## Installation
 
 In ~/MagicMirror/modules
+
 ```sh
-git clone https://github.com/JHWelch/MMM-CTA.git
+git clone https://github.com/JHWelch/MMM-CTA
 ```
 
 No dependencies are required for usage. See below for development dependencies.
