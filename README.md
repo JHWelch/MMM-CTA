@@ -24,23 +24,22 @@ You need to obtain API keys to access CTA data. The API keys are two separate ke
 
 The bus tracker API key can be obtained immediately, the train tracker key can take a few days to register.
 
-## Using the module
+## Configuration
 
-To use this module, add the following configuration block to the modules array in the `config/config.js` file:
+To use this module, add the following configuration to your `config/config.js` file.
+
 ```js
-var config = {
-  modules: [
-    {
-      module: 'MMM-CTA',
-      config: {
-        // See below for configurable options
-      }
-    }
-  ]
+{
+  module: 'MMM-CTA',
+  config: {
+    busApiKey: 'YOUR_BUS_API_KEY',
+    trainApiKey: 'YOUR_TRAIN_API_KEY',
+    stops: [
+      // See `stops` option below
+    ],
+  }
 }
 ```
-
-## Configuration options
 
 | Option            | Required?    | Description                                                                         |
 | ----------------- | ------------ | ----------------------------------------------------------------------------------- |
