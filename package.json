@@ -1,7 +1,7 @@
 {
   "name": "mmm-cta",
   "version": "2.0.0",
-  "description": "Magic Mirror Module for displaying CTA Train and Bus arrival times",
+  "description": "MagicMirror² Module for displaying CTA Train and Bus arrival times",
   "main": "MMM-CTA.js",
   "scripts": {
     "test": "jest",
