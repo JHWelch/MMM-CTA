@@ -109,17 +109,17 @@ npm install
 There is a test suite using Jest.
 
 ```sh
-npm test
+node --run test
 ```
 
 ### Linting
 
 ```sh
 # Run linting
-npm run lint
+node --run lint
 
 # Fix linting errors
-npm run fix
+node --run fix
 ```
 
 
