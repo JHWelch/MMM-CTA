@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "lint": "eslint .",
-    "fix": "eslint . --fix"
+    "lint": "eslint",
+    "fix": "eslint --fix"
   },
   "author": "Jordan Welch",
   "license": "MIT",
