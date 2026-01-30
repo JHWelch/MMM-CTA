@@ -1,6 +1,6 @@
 # MMM-CTA
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror/).
 
 This module displays Chicago Transit Authority (CTA) bus and train arrival times.
 
