@@ -96,10 +96,21 @@ The `stops` option is an array of objects. Each object represents a stop to disp
 
 ## Update
 
-To update the module, navigate to the module folder and use git to pull the latest changes.
+### Automatic Update
+
+Did you know MagicMirror² has a built-in module updater? Read more about it [here](https://docs.magicmirror.builders/modules/updatenotification.html#updates-array).
+
+Add the following to your `updates` array of `updatenotification` in `config/config.js`
+
+```js
+{ 'MMM-CTA': 'git pull' },
+```
+
+### Manual Update
+
+In `~/MagicMirror/modules/MMM-CTA`
 
 ```sh
-cd ~/MagicMirror/modules/MMM-CTA
 git pull
 ```
 
