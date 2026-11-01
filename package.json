@@ -17,7 +17,7 @@
   "devDependencies": {
     "@fetch-mock/jest": "^0.2.20",
     "@jhwelch/mmm-eslint-config": "^5.0.0",
-    "eslint": "^10.11.0",
+    "eslint": "^10.13.0",
     "jest": "^30.5.2",
     "nunjucks": "^3.2.4"
   },
